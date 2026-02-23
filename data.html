@@ -1,0 +1,359 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MISP Challenge 2026 Data</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<style>
+			/* Table with borders for dataset page */
+			.table-wrapper table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			.table-wrapper th,
+			.table-wrapper td {
+				border: 1px solid #ccc;
+				padding: 8px;
+				text-align: center;
+			}
+
+			.table-wrapper thead {
+				background-color: #f2f2f2;
+			}
+
+			.table-wrapper th {
+				font-weight: 600;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+					<!-- <img src="images/isca.png" width="6%" height="6%" style="margin:0 77% 0 0;"> -->
+					<!-- <h1 style="font-size: 120%;  margin: -4% 0 -2% 0"><a href="index.html" id="logo">Multimodal Information
+							Based Speech Processing (MISP) Challenge 2023</a></h1> -->
+					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Multimodal Information
+								Based Speech Processing (MISP) 2026 Challenge</a></h1> 	
+					<img src="images/ieee.svg" width="7%"height="7%" style="margin:-10% 0% 3% 79%;">
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="task.html">AVT-QEKS Task</a></li>
+								<li class="current"><a href="data.html">Dataset</a></li>
+								<li><a href="Guidelines.html">Guidelines</a></li>
+								<li><a href="download.html">Registration</a></li>
+								<li><a href="extral_data.html">Extra Data</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						        <h2>MISP-QEKS Dataset</h2>
+        <p>Large-scale Audio-Visual-Text Benchmark for Query-by-Example Keyword Spotting</p>
+      </header>
+
+      <p>
+        The MISP 2026 Challenge uses the <b>MISP-QEKS</b> dataset, which is the first large-scale benchmark explicitly
+        designed for <b>audio–visual–text tri-modal</b> query-by-example keyword spotting (QEKS).
+        MISP-QEKS combines the linguistic richness and speaker diversity of existing open-source corpora with
+        realistic noise conditions, producing a dataset that is both scalable and faithful to real deployment scenarios.
+      </p>
+
+      <hr />
+
+      <h3>Creation Pipeline</h3>
+
+      <p>
+        As illustrated in Figure 2, MISP-QEKS is constructed using a hybrid strategy.
+        We start with an automatic pipeline that extracts <b>word-level audio-visual-text clips</b> from sentence-level
+        corpora that provide synchronized audio, video, and transcripts.
+        We then record diverse background noises in everyday environments and mix them with the clean clips at controlled
+        signal-to-noise ratios (SNRs). Finally, all samples are organized into <b>enrollment–query pairs</b>, resulting in
+        the first large-scale corpus for tri-modal QEKS.
+      </p>
+
+      <span class="image featured">
+        <!-- Convert fig/task_dataset.pdf to PNG/SVG for web and put it here -->
+        <img src="images/task_dataset.jpg" alt="MISP-QEKS data processing pipeline: keyword clipping, noisy simulation, and sample-pair construction." />
+      </span>
+      <p style="margin-top:-10px; font-size: 95%; text-align:center;">
+        <b>Figure 2:</b> Overview of the MISP-QEKS data processing pipeline: (a) keyword clipping, (b) noisy simulation, (c) enrollment–query pair construction.
+      </p>
+
+      <hr />
+
+      <h3>Statistical Information</h3>
+
+      <p>
+        MISP-QEKS is constructed from the Oxford-BBC <b>LRS2</b> corpus. The dataset provides approximately <b>193.606 hours</b>
+        of tri-modal data, covering <b>9,830+</b> distinct keywords and <b>610,000</b> enrollment–query pairs
+        (<b>122,000</b> positive and <b>488,000</b> negative). The dataset is split under a <b>speaker-independent</b> criterion.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Split</th>
+              <th>Duration (h)</th>
+              <th>Keywords</th>
+              <th>Pairs</th>
+              <th>Positive</th>
+              <th>Negative</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Train</b></td>
+              <td>157.756</td>
+              <td>8,357</td>
+              <td>500,000</td>
+              <td>100,000</td>
+              <td>400,000</td>
+            </tr>
+            <tr>
+              <td><b>Dev</b></td>
+              <td>3.245</td>
+              <td>2,247</td>
+              <td>10,000</td>
+              <td>2,000</td>
+              <td>8,000</td>
+            </tr>
+            <tr>
+              <td><b>Eval-seen (IV)</b></td>
+              <td>15.300</td>
+              <td>2,174</td>
+              <td>50,000</td>
+              <td>10,000</td>
+              <td>40,000</td>
+            </tr>
+            <tr>
+              <td><b>Eval-blind (OOV)</b></td>
+              <td>17.305</td>
+              <td>1,445</td>
+              <td>50,000</td>
+              <td>10,000</td>
+              <td>40,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        The development set partially overlaps with training keywords for hyperparameter tuning.
+        For evaluation, <b>Eval-seen</b> is drawn from training keywords (in-vocabulary), while <b>Eval-blind</b> contains
+        unseen keywords (out-of-vocabulary), enabling both IV and OOV assessment.
+      </p>
+
+      <p>
+        For the MISP 2026 Challenge, we will additionally release a new held-out evaluation set with both seen and unseen keywords
+        to enable fair leaderboard ranking and to assess both in-vocabulary and out-of-vocabulary generalization.
+      </p>
+						<h2>Downloads</h2>
+
+<p>
+The MISP-QEKS dataset is hosted on HuggingFace under controlled access.
+</p>
+
+<p>
+Before downloading, participants must:
+</p>
+
+<ol>
+<li>Complete the <a href="registration.html">Registration Form</a>.</li>
+<li>Use the <b>same email address</b> to request dataset access on HuggingFace.</li>
+<li>After verification, download permission will be granted.</li>
+</ol>
+
+<p>
+Dataset link:
+<br>
+<a href="https://huggingface.co/datasets/Igor97/MISP-QEKS" target="_blank">
+https://huggingface.co/datasets/Igor97/MISP-QEKS
+</a>
+</p>
+
+<p>
+⚠ Access requests submitted with a different email address will not be approved.
+</p>
+						
+
+						<!-- <center>
+							<table  class='default'>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">Config ID</th>
+							        <th style="border: solid 1px;">Time</th>
+							        <th style="border: solid 1px;">Content</th>
+							        <th style="border: solid 1px;">Light</th>
+							        <th style="border: solid 1px;">TV</th>
+							        <th style="border: solid 1px;">Group</th>
+							    </tr> 
+							    <tr style="vertical-align: center; border: solid 1px;">
+							        <th style="border: solid 1px;">00</th>
+							        <td rowspan="9" valign="middle" style="border: solid 1px;">Day</td>
+							        <td style="border: solid 1px;">Wake word & Similar words</td>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">1</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">01</th>
+							        <td rowspan="12" valign="middle" style="border: solid 1px;">Talk freely</td>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">1</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">02</th>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">1</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">03</th>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">2</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">04</th>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">2</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">05</th>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">2</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">06</th>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">2</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">07</th>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">1</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">08</th>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">1</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">09</th>
+							        <td rowspan="4" valign="middle" style="border: solid 1px;">Night</td>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">1</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">10</th>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">2</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">11</th>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">2</td>
+							    </tr>
+							    <tr style="border: solid 1px;">
+							        <th style="border: solid 1px;">12</th>
+							        <td style="border: solid 1px;">on</td>
+							        <td style="border: solid 1px;">off</td>
+							        <td style="border: solid 1px;">1</td>
+							    </tr>
+							    <tr>
+							        <th colspan="12" style="border: solid 1px;">Tab.2. Configuration</th>
+							    </tr>
+							</table>
+						</center> -->
+
+						<!-- <p>
+							"Time" refers to the recording time, the value is day or night. "Content" refers to the speaking content. We also recorded some data only containing wake-up/similar word to support audio-visual voice wake-up task. "Light" refers to turning on/off the light. "TV" refers to turning on/off the TV. "Group" refers to how much groups of participants in a conversation.</br>
+							By observing the real conversations these were taking place in real living room, we found that the participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We found that average speech overlap ratios of 𝐺𝑟𝑜𝑢𝑝 = 1 and 𝐺𝑟𝑜𝑢𝑝 = 2 are 10%~20% and 50%~70%, respectively. And the number of groups greater than 3 is very rare when the number of participants is no more than 6.
+						</p> -->
+					</div>
+				</section>
+				<script>
+					function checkPassword(event, url) {
+						event.preventDefault(); // 阻止默认链接跳转
+						const password = prompt("请输入密码："); // 弹出密码输入框
+						const correctPassword = "misp666"; // 设置正确的密码
+			
+						if (password === correctPassword) {
+							window.location.href = url; // 如果密码正确，则跳转到目标页面
+						} else {
+							alert("密码错误，无法跳转！");
+						}
+					}
+				</script>
+
+				<!-- <script>
+					function checkPassword(event, url) {
+						event.preventDefault(); // 阻止默认链接跳转
+						const password = prompt("请输入密码："); // 弹出密码输入框
+						const correctPassword = "misp666"; // 设置正确的密码
+					
+						if (password === correctPassword) {
+							const link = document.createElement('a');
+							// 需要下载的链接地址（假设url是文件的下载地址）
+							link.href = url;
+							link.setAttribute('referrerpolicy', 'no-referrer');
+							link.click();  // 自动触发点击事件开始下载
+						} else {
+							alert("密码错误，无法下载！");
+						}
+					}
+				</script> -->
+  
+
+			<!-- Gigantic Heading -->
+
+			<!-- Footer -->
+				<div id="footer">
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; All rights reserved</li><li>E-mail: mispchallenge@gmail.com</li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

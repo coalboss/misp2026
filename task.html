@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>AVT-QEKS Task</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>LaTeX in HTML</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js" 
+			onload="renderMathInElement(document.body);"></script>
+		
+		<!-- MathJax (recommended: put in <head> for stable rendering) -->
+		<script>
+		window.MathJax = {
+			tex: {
+			inlineMath: [['\\(','\\)']],     // use only \( ... \)
+			displayMath: [['\\[','\\]']],    // use only \[ ... \]
+			processEscapes: true,
+			packages: {'[+]': ['ams']}
+			},
+			options: {
+			skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+			}
+		};
+		</script>
+		<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+					<!-- <img src="images/isca.png" width="6%" height="6%" style="margin:0 77% 0 0;"> -->
+					<!-- <h1 style="font-size: 120%;  margin: -4% 0 -2% 0"><a href="index.html" id="logo">Multimodal Information
+							Based Speech Processing (MISP) Challenge 2023</a></h1> -->
+					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Multimodal Information
+								Based Speech Processing (MISP) 2026 Challenge</a></h1> 	
+					<img src="images/ieee.svg" width="7%"height="7%" style="margin:-10% 0% 3% 79%;">
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li class="current"><a href="task.html">AVT-QEKS Task</a></li>
+								<li><a href="data.html">Dataset</a></li>
+								<li><a href="Guidelines.html">Guidelines</a></li>
+								<li><a href="download.html">Registration</a></li>
+								<li><a href="extral_data.html">Extra Data</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						<h1 style="font-size: 150%;">Background and Motivation</h1>
+
+						<p>Keyword spotting (KWS) aims to detect a target word or phrase from continuous speech and is widely used in voice-controlled systems and speech-driven interfaces. Traditional KWS systems rely solely on the audio modality, which makes them vulnerable to far-field attenuation, background noise, reverberation, and multi-speaker overlap in realistic environments.</p>
+						<p> Recent research has shown that incorporating visual information—such as lip movements—can markedly improve robustness by reducing false alarms under noisy conditions. However, most existing audio-visual KWS systems are designed for a fixed and narrow set of predefined keywords, limiting their flexibility in real-world applications. </p>
+						<p> Query-by-Example Keyword Spotting (QEKS) addresses this limitation by enabling open-vocabulary detection: users provide an example of a keyword (e.g., a spoken example), and the system searches for matching occurrences. Nevertheless, many QEKS systems still rely primarily on audio input, making them fragile in challenging acoustic scenarios.</p>
+						<p>The MISP 2026 Challenge introduces an <b>audio–visual–text tri-modal QEKS paradigm</b>, combining the open-vocabulary flexibility of QEKS with the robustness offered by visual cues and auxiliary textual information, thereby enabling more general and noise-resilient keyword spotting systems.</p>
+							
+	  <hr />
+
+      <h1 style="font-size: 150%;">Task Definition</h1>
+
+      <p>
+        In AVT-QEKS, the enrollment information associated with a keyword consists of an exemplar’s spoken audio
+        \(X^{\mathrm{E}}\), visual observations (e.g., lip movements or facial appearance) \(V^{\mathrm{E}}\), and auxiliary
+        textual information \(S^{\mathrm{E}}\). During inference, the query includes the user’s speech signal \(X^{\mathrm{Q}}\)
+        and corresponding visual cues \(V^{\mathrm{Q}}\).
+      </p>
+
+      <span class="image featured">
+        <!-- Put your figure at images/tri_modal.png (recommended). If your figure is .pdf, convert to .png/.svg for web. -->
+        <img src="images/tri_modal.jpg" alt="A schematic overview of audio-visual-text query-by-example keyword spotting." />
+      </span>
+      <p style="margin-top:-10px; font-size: 95%; text-align:center;">
+        <b>Figure 1:</b> A schematic overview of audio-visual-text query-by-example keyword spotting (AVT-QEKS).
+      </p>
+
+      <p>
+        The objective is to estimate the likelihood
+        \(p(X^{\mathrm{Q}}, V^{\mathrm{Q}} \mid X^{\mathrm{E}}, V^{\mathrm{E}}, S^{\mathrm{E}})\)
+        that the query contains the same keyword as the enrollment exemplar, and to make a binary decision via hypothesis testing:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+        \hat{\mathcal{H}}=
+        \begin{cases}
+        \mathcal{H}_1, & \text{if } p(X^{\rm Q}, V^{\rm Q}\mid X^{\rm E}, V^{\rm E}, S^{\rm E}) \ge \tau,\\
+        \mathcal{H}_0, & \text{otherwise},
+        \end{cases}
+        \]
+      </p>
+
+      <p>
+        where \(\mathcal{H}_1\) denotes the hypothesis that the enrolled keyword is present in the query and
+        \(\mathcal{H}_0\) denotes the alternative hypothesis. The threshold \(\tau\) controls the operating point.
+      </p>
+
+      <hr />
+
+      <h1 style="font-size: 150%;">Evaluation Criterion</h1>
+
+      <p>
+        By sweeping the decision threshold \(\tau\), a receiver operating characteristic (ROC) curve is obtained, which
+        characterizes the trade-off between the true positive rate (TPR) and the false positive rate (FPR):
+      </p>
+
+      <p style="text-align:center;">
+        \[
+        \mathrm{TPR}(\tau), \mathrm{FPR}(\tau) =
+        \frac{\mathrm{TP}(\tau)}{\mathrm{TP}(\tau)+\mathrm{FN}(\tau)},
+        \frac{\mathrm{FP}(\tau)}{\mathrm{FP}(\tau)+\mathrm{TN}(\tau)}.
+        \]
+      </p>
+
+      <p>
+        The <b>Area Under the ROC Curve (AUC)</b> is adopted as the primary evaluation metric for this challenge and computed as:
+      </p>
+
+      <p style="text-align:center;">
+        \[
+        \mathrm{AUC} = \int_{0}^{1} \mathrm{TPR}(\mathrm{FPR}) \, d\,\mathrm{FPR}.
+        \]
+      </p>
+
+      <p>
+        AUC measures the overall separability between positive (\(\mathcal{H}_1\)) and negative (\(\mathcal{H}_0\)) trials
+        across all possible operating points. Higher AUC indicates better matching performance.
+      </p>
+
+    </div>
+  </section>
+
+
+			<!-- Gigantic Heading -->
+<!-- 				<section class="wrapper style2">
+					<div class="container">
+					</div>
+				</section>
+
+				<section class="wrapper style1">
+					<div class="container">
+						<h1 style="font-size: 150%;">......</h1>
+					</div>
+				</section> -->
+
+			<!-- Footer -->
+				<div id="footer">
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; All rights reserved</li><li>E-mail: mispchallenge@gmail.com</li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
