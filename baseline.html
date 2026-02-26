@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MISP Challenge 2026 Data</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<style>
+			/* Table with borders for dataset page */
+			.table-wrapper table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			.table-wrapper th,
+			.table-wrapper td {
+				border: 1px solid #ccc;
+				padding: 8px;
+				text-align: center;
+			}
+
+			.table-wrapper thead {
+				background-color: #f2f2f2;
+			}
+
+			.table-wrapper th {
+				font-weight: 600;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+					<!-- <img src="images/isca.png" width="6%" height="6%" style="margin:0 77% 0 0;"> -->
+					<!-- <h1 style="font-size: 120%;  margin: -4% 0 -2% 0"><a href="index.html" id="logo">Multimodal Information
+							Based Speech Processing (MISP) Challenge 2023</a></h1> -->
+					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Multimodal Information
+								Based Speech Processing (MISP) 2026 Challenge</a></h1> 	
+					<!-- <img src="images/ieee.svg" width="7%"height="7%" style="margin:-10% 0% 3% 79%;"> -->
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="task.html">AVT-QEKS</a></li>
+								<li><a href="data.html">Dataset</a></li>
+								<li class="current"><a href="baseline.html">Baseline</a></li>
+								<li><a href="Guidelines.html">Guidelines</a></li>
+								<li><a href="download.html">Registration</a></li>
+								<li><a href="extral_data.html">Extra Data</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+  <!-- Main -->
+  <section class="wrapper style1">
+    <div class="container">
+
+
+        <h2>Official Baseline</h2>
+
+      <p>
+        We provide an official baseline system for the MISP-QEKS challenge
+        to facilitate reproducible research on tri-modal query-by-example keyword spotting.
+        The baseline supports <b>text–audio–visual enrollment</b> and
+        <b>audio–visual query</b>, and is designed for robust keyword matching
+        under realistic noisy conditions.
+      </p>
+
+      <hr />
+
+      <h3>Model Overview</h3>
+
+      <p>
+        As shown in FIgure 3, the baseline architecture consists of three key components:
+      </p>
+
+      <ul>
+        <li><b>XEQ-Matcher</b>: cross-modal enrollment–query matching framework</li>
+        <li><b>VGM</b> (Visual Gating Module): suppresses noise using visual cues</li>
+        <li><b>MAM</b> (Multimodal Alignment Module): aligns audio, visual, and textual representations</li>
+      </ul>
+
+      <span class="image featured">
+        <!-- Put your baseline framework figure here -->
+        <img src="images/method.jpg" alt="Overview of the MISP-QEKS baseline architecture." />
+      </span>
+
+      <p style="margin-top:-10px; font-size: 95%; text-align:center;">
+        <b>Figure 3:</b> Overview of the official MISP-QEKS baseline architecture.
+      </p>
+
+      <hr />
+
+      <h3>Reference Performance</h3>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Setting</th>
+              <th>Split</th>
+              <th>AUC (%)</th>
+              <th>EER (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>XEQ-Matcher</td>
+              <td>Eval-seen</td>
+              <td>82.82</td>
+              <td>24.23</td>
+            </tr>
+            <tr>
+              <td>XEQ-Matcher</td>
+              <td>Eval-unseen</td>
+              <td>79.79</td>
+              <td>26.20</td>
+            </tr>
+            <tr>
+              <td>XEQ-Matcher + VGM + MAM</td>
+              <td>Eval-seen</td>
+              <td>85.94</td>
+              <td>21.60</td>
+            </tr>
+            <tr>
+              <td>XEQ-Matcher + VGM + MAM</td>
+              <td>Eval-unseen</td>
+              <td>85.44</td>
+              <td>21.49</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Evaluation follows the official protocol using <b>AUC</b> and <b>EER</b>
+        as primary metrics under both in-vocabulary (IV) and out-of-vocabulary (OOV) settings.
+      </p>
+
+      <hr />
+
+      <h3>Code Repository</h3>
+
+      <p>
+        The complete baseline implementation, pretrained models, and detailed documentation
+        are available on GitHub:
+      </p>
+
+      <p>
+        <a href="https://github.com/coalboss/MISP-QEKS" target="_blank">
+          https://github.com/coalboss/MISP-QEKS
+        </a>
+      </p>
+
+    </div>
+  </section>
+  
+
+			<!-- Gigantic Heading -->
+
+			<!-- Footer -->
+				<div id="footer">
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; All rights reserved</li><li>E-mail: mispchallenge@gmail.com</li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
